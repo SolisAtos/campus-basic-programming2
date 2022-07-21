@@ -55,15 +55,16 @@ namespace Practica1
                 Console.WriteLine(integer);
             }
         }
-        static void Main(string[] args)
+
+        static void PrimerEjercicio()
         {
             // Declarar arreglo de enteros
-            int[] IntegerArray = new int[] {1,3,5,7,9,13};
+            int[] IntegerArray = new int[] { 1, 3, 5, 7, 9, 13 };
             // Variables de los metodos
             Queue<int> QueueReversed = new Queue<int>();
             List<int> ListReversed = new List<int>();
             Dictionary<int, int> DictionaryReversed = new Dictionary<int, int>();
-            
+
             // Imprimir arreglo original
             Console.WriteLine($"Original Array: {IntegerArray}");
             PrintArray(IntegerArray);
@@ -111,7 +112,7 @@ namespace Practica1
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10, ts.Ticks);
             Console.WriteLine("RunTime " + elapsedTime);
-            Console.WriteLine($"Primer dato: { QueueExecutionTest.Dequeue()}");
+            Console.WriteLine($"Primer dato: {QueueExecutionTest.Dequeue()}");
 
             // Prueba de tiempo de ejecucion para List
             Console.WriteLine($"\nExecution time for List: {ListReversed}");
@@ -144,6 +145,50 @@ namespace Practica1
                 ts.Milliseconds / 10, ts.Ticks);
             Console.WriteLine("RunTime " + elapsedTime);
             Console.WriteLine($"Primer dato: {DictionaryExecutionTest.First()}");
+
+        }
+        static void Main(string[] args)
+        {
+            List<int> Lista10Numeros = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            // 2.1.Funcion que enlista numeros pares.
+            List<int> NumerosPares = Lista10Numeros.Where(a => a % 2 == 0).ToList();
+            Console.WriteLine("Numeros pares:");
+            foreach (int number in NumerosPares)
+            {
+                Console.WriteLine(number);
+            }
+
+
+            // 2.2.Funcion que enlista números impares.
+            List<int> NumerosImpares = Lista10Numeros.Where(a => a % 2 != 0).ToList();
+            Console.WriteLine("\nNumeros impares:");
+            foreach (int number in NumerosImpares)
+            {
+                Console.WriteLine(number);
+            }
+
+
+            // 2.3.Funcion que ordena una lista en orden ascendente.
+            Lista10Numeros.Sort((first, second) => first.CompareTo(second));
+            Console.WriteLine("\nOrdenado ascendente:");
+            foreach (int number in Lista10Numeros)
+            {
+                Console.WriteLine(number);
+            }
+
+            // 2.4.Funcion que ordena una lista en orden descendente.
+            Lista10Numeros.Sort((first, second) => second.CompareTo(first));
+            Console.WriteLine("\nOrdenado descendente:");
+            foreach (int number in Lista10Numeros)
+            {
+                Console.WriteLine(number);
+            }
+
+            // 2.5.Funcion que revisa si un valor es multiplo de 3.
+            Func<int, bool> multiploDeTres = num => num % 3 == 0;
+            Console.WriteLine($"\n2 es multiplo de 3? {multiploDeTres(2)}");
+            Console.WriteLine($"15 es multiplo de 3? {multiploDeTres(15)}");
 
         }
     }
