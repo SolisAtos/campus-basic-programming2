@@ -147,7 +147,7 @@ namespace Practica1
             Console.WriteLine($"Primer dato: {DictionaryExecutionTest.First()}");
 
         }
-        static void Main(string[] args)
+        static void SegndoEjercicio()
         {
             List<int> Lista10Numeros = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
@@ -189,6 +189,85 @@ namespace Practica1
             Func<int, bool> multiploDeTres = num => num % 3 == 0;
             Console.WriteLine($"\n2 es multiplo de 3? {multiploDeTres(2)}");
             Console.WriteLine($"15 es multiplo de 3? {multiploDeTres(15)}");
+        }
+
+        static string[] OrdenarArregloDescendente(string[] arreglo)
+        {
+            return arreglo.OrderByDescending(x => x).ToArray();
+        }
+
+        static bool ContieneSubcadena(string[] arreglo, string subcadena)
+        {
+            IEnumerable<string> resultString = arreglo.Where(x => x.Contains(subcadena));
+            
+            foreach (string coincidencia in resultString)
+            {
+                return true;
+            }
+            
+            return false;
+        }
+
+        static string[] RegresarSiEmpiezanConJuan(string[] arreglo)
+        {
+            string [] result = arreglo.Where(x => x.Contains("Juan")).ToArray();
+            return result;
+        }
+
+        static string[] SaludarPersonas(string[] arreglo)
+        {
+            string[] resultado = arreglo.Select(x => "Hola " + x).ToArray();
+            return resultado;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("\n3. Lista de nombres:");
+            string[] Nombres = new string[] { "Juan", "Pablo", "Pedro", "Pepe", "Ana", "Esteban", "Daniel", "Mariano", "Carolina", "Silvia", "Roberto", "Juanito", "Juana" };
+            foreach (string nombre in Nombres)
+            {
+                Console.WriteLine(nombre);
+            }
+
+
+            List<string> Resultado = new List<string>();
+            // 3.1.Funcion que recibe un arreglo de strings y retorna el arreglo ordenado de forma descendente.
+            Console.WriteLine("\n3.1 Ordenar arreglo de forma descendente:");
+            string[] nombresDescendente = OrdenarArregloDescendente(Nombres);
+            foreach (string nombre in nombresDescendente)
+            {
+                Console.WriteLine(nombre);
+            }
+
+
+            // 3.2.Funcion que recibe un arreglo de strings y un string objetivo, la funcion retorna true en caso de
+            // encontrar el string objetivo dentro del arreglo de strings, false en caso contrario.
+            Console.WriteLine("\n3.2 Contiene subcadena:");
+            string subcadena1 = "Ped";
+            bool contiene1 = ContieneSubcadena(Nombres, subcadena1);
+            string subcadena2 = "or";
+            bool contiene2 = ContieneSubcadena(Nombres, subcadena2);
+
+            Console.WriteLine($"El arreglo contiene '{subcadena1}'? {contiene1}");
+            Console.WriteLine($"El arreglo contiene '{subcadena2}'? {contiene2}");
+            
+
+            // 3.3.Funcion que recibe un arreglo de strings y retorna los elementos del arreglo que empiecen con “Juan”.
+            string[] arregloJuanes = RegresarSiEmpiezanConJuan(Nombres);
+            Console.WriteLine("\n3.3 Empiezan con Juan:");
+            foreach (string juan in arregloJuanes)
+            {
+                Console.WriteLine(juan);
+            }
+
+
+            // 3.4.Funcion que recibe un arreglo de strings y concatena a cada uno de los elementos dentro del string
+            // el prefijo “hola ”. (ex. “Hola Juan”).
+            string[] arregloSaludos = SaludarPersonas(Nombres);
+            Console.WriteLine("\n3.4 Saludar personas:");
+            foreach (string saludo in arregloSaludos)
+            {
+                Console.WriteLine(saludo);
+            }
 
         }
     }
