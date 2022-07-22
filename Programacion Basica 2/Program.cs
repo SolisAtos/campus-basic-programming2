@@ -193,7 +193,7 @@ namespace Practica1
         static void TercerEjercicio()
         {
             Console.WriteLine("\n3. Lista de nombres:");
-            string[] Nombres = new string[] { "Juan", "Pablo", "Pedro", "Pepe", "Ana", "Esteban", "Daniel", "Mariano", "Carolina", "Silvia", "Roberto", "Juanito", "Juana" };
+            string[] Nombres = new string[] { "Juan", "Pablo", "Pedro", "Pepe", "Ana", "Esteban", "Daniel", "Mariano", "Carolina", "Silvia", "Roberto", "Juanito", "Juana", "SuperJuanMega" };
             foreach (string nombre in Nombres)
             {
                 Console.WriteLine(nombre);
@@ -260,7 +260,7 @@ namespace Practica1
 
         static string[] RegresarSiEmpiezanConJuan(string[] arreglo)
         {
-            string [] result = arreglo.Where(x => x.Contains("Juan")).ToArray();
+            string [] result = arreglo.Where(x => x.StartsWith("Juan")).ToArray();
             return result;
         }
 
